@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import IndexLayout from "app/layouts/IndexLayout";
-import HomeScreen from "app/screens/auth/HomeScreen";
-import LoginScreen from "app/screens/auth/LoginScreen";
-import LoginLayout from "app/layouts/LoginLayout";
-import IndexScreen from "app/screens/auth/IndexScreen";
+import IndexLayout from "ui/layouts/IndexLayout";
+import HomeScreen from "ui/screens/auth/HomeScreen";
+import LoginScreen from "ui/screens/auth/LoginScreen";
+import LoginLayout from "ui/layouts/LoginLayout";
+import IndexScreen from "ui/screens/auth/IndexScreen";
 
 class Routes extends Component {
   render() {

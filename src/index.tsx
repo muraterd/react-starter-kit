@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "mobx-react";
 
 // import "bootstrap/dist/css/bootstrap.css";
-import "./app/assets/styles/bootstrap/bootstrap-override.scss";
+import "./ui/assets/styles/bootstrap/bootstrap-override.scss";
 import Startup from "Startup";
 import stores from "app/stores";
 

@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import Routes from "app/Routes";
+import Routes from "ui/Routes";
 
 class App extends PureComponent {
   // constructor(props) {

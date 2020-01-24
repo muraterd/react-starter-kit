@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import App from "app/App";
+import App from "ui/App";
 
 const Startup = () => <App />;
 
