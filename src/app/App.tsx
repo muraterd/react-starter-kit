@@ -1,10 +1,5 @@
 import React, { PureComponent } from "react";
-
-import { AuthService } from "services/auth/AuthService";
-import HttpClient from "infrastructure/HttpClient/HttpClient";
-import Routes from "Routes";
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Routes from "app/Routes";
 
 class App extends PureComponent {
   // constructor(props) {
@@ -17,11 +12,7 @@ class App extends PureComponent {
   // }
 
   render() {
-    return (
-      <div>
-        <Routes />
-      </div>
-    );
+    return <Routes />;
   }
 }
 

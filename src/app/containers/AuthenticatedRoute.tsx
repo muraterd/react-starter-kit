@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AuthService } from "services/auth/AuthService";
+import { AuthService } from "app/services/auth/AuthService";
 
 function AuthenticatedRoute({ component: Component, ...rest }) {
   return (

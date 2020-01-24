@@ -4,9 +4,9 @@ import ReactDOM from "react-dom";
 import { Provider } from "mobx-react";
 
 // import "bootstrap/dist/css/bootstrap.css";
-import "./assets/styles/bootstrap/bootstrap-override.scss";
-import App from "App";
-import stores from "stores";
+import "./app/assets/styles/bootstrap/bootstrap-override.scss";
+import Startup from "Startup";
+import stores from "app/stores";
 
 const render = (Component: any) => {
   return ReactDOM.render(
@@ -17,11 +17,11 @@ const render = (Component: any) => {
   );
 };
 
-render(App);
+render(Startup);
 
 if (module.hot) {
-  module.hot.accept("./App", () => {
-    const NextApp = require("./App").default;
+  module.hot.accept("./Startup", () => {
+    const NextApp = require("./Startup").default;
     render(NextApp);
   });
 }

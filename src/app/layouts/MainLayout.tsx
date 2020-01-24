@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import AuthenticatedRoute from "containers/AuthenticatedRoute";
+import AuthenticatedRoute from "app/containers/AuthenticatedRoute";
 
 const MainLayout = ({ component: Component, ...rest }) => {
   return (
