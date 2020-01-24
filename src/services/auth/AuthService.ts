@@ -1,6 +1,6 @@
 import moment from "moment";
 import jwt from "jsonwebtoken";
-import HttpClient from "../../helpers/HttpClient";
+import HttpClient from "infrastructure/HttpClient/HttpClient";
 
 const TOKEN_EXPIRE_DATE_KEY = "TOKEN_EXPIRE_DATE";
 const TOKEN_KEY = "JWT_TOKEN";

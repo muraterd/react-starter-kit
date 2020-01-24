@@ -15,7 +15,8 @@
     "noEmit": true,
     "jsx": "react",
     "baseUrl": "src",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "experimentalDecorators": true
   },
   "include": ["src"]
 }
