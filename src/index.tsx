@@ -1,10 +1,10 @@
 // Below: Hot Reload fix
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "App";
 
 // import "bootstrap/dist/css/bootstrap.css";
 import "./assets/styles/bootstrap/bootstrap-override.scss";
+import App from "App";
 
 // const render = (Component: any) => {
 //   return ReactDOM.render(
