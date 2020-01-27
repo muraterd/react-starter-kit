@@ -3,6 +3,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "mobx-react";
 
+// load entensions
+import "data/extensions";
+
 // import "bootstrap/dist/css/bootstrap.css";
 import "./ui/assets/styles/bootstrap/bootstrap-override.scss";
 import Startup from "Startup";
