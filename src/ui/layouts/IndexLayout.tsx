@@ -1,9 +1,10 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import BaseRoute from "ui/containers/BaseRoute";
+import { LayoutProps } from "ui/models/screen/LayoutProps";
 
-const IndexLayout = ({ component: Component, ...rest }) => {
+const IndexLayout = ({ component: Component, ...rest }: LayoutProps) => {
   return (
-    <Route
+    <BaseRoute
       {...rest}
       render={matchProps => (
         <div className="DefaultLayout">

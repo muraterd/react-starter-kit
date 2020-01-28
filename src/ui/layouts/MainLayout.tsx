@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
 import AuthenticatedRoute from "ui/containers/AuthenticatedRoute";
+import { LayoutProps } from "ui/models/screen/LayoutProps";
 
-const MainLayout = ({ component: Component, ...rest }) => {
+const MainLayout = ({ component: Component, ...rest }: LayoutProps) => {
   return (
     <AuthenticatedRoute
       {...rest}

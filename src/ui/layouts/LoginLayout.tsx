@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
-import { Route } from "react-router";
+import BaseRoute from "ui/containers/BaseRoute";
+import { LayoutProps } from "ui/models/screen/LayoutProps";
 
-const LoginLayout = ({ component: Component, ...rest }) => {
+const LoginLayout = ({ component: Component, ...rest }: LayoutProps) => {
   return (
-    <Route
+    <BaseRoute
       {...rest}
       component={matchProps => (
         <Fragment>

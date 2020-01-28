@@ -1,10 +1,15 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, RouteProps } from "react-router-dom";
 import { AuthService } from "ui/services/auth/AuthService";
+import BaseRoute, { BaseRouteProps } from "ui/containers/BaseRoute";
 
-function AuthenticatedRoute({ component: Component, ...rest }) {
+export interface AuthenticatedRouteProps extends BaseRouteProps {
+  component: any;
+}
+
+function AuthenticatedRoute({ component: Component, ...rest }: AuthenticatedRouteProps) {
   return (
-    <Route
+    <BaseRoute
       {...rest}
       render={props =>
         AuthService.isLoggedIn() ? (
