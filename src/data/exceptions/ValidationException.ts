@@ -23,6 +23,7 @@ export class ValidationException extends HttpException {
     return new ValidationException({
       validationErrors: ValidationException.convertServerErrors(error.response.data.errors),
       statusCode: error.response.status,
+      response: error.response.data,
       message: error.message
     });
   };

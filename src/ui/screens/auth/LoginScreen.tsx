@@ -5,34 +5,44 @@ import FormikInput from "ui/components/formik/FormikInput/FormikInput";
 import HttpClient from "infrastructure/HttpClient/HttpClient";
 import { ValidationException } from "data/exceptions/ValidationException";
 import { ScreenProps } from "ui/models/screen/ScreenProps";
-import { HttpException } from "data/exceptions/HttpException";
-import HttpStatusCode from "data/definitions/HttpStatusCode";
+import { UncontrolledAlert } from "reactstrap";
+import { UnauthorizedException } from "data/exceptions/UnauthorizedException";
 
 const loginFormValidationSchema = Yup.object().shape({
   email: Yup.string()
-    .email("Bu ne aq..")
-    .required("Email alanı zorunlu"),
+    .email("Lütfen geçerli bir eposta adresi girin.")
+    .required("Eposta alanı zorunlu"),
   password: Yup.string().required()
 });
 
 type LoginFormValues = { email: string; password: string };
 interface Props extends ScreenProps {}
+interface State {
+  errorMessage?: string;
+}
 
-export default class LoginScreen extends Component<Props> {
+export default class LoginScreen extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {};
+  }
+
   login = async (email, password) => {
     await HttpClient.post("api/auth/login", { email, password });
   };
 
   onSubmit = async (values: LoginFormValues, { setErrors, setSubmitting }: FormikHelpers<LoginFormValues>) => {
+    this.setState({ errorMessage: undefined });
     try {
       await this.login(values.email, values.password);
     } catch (error) {
       if (error instanceof ValidationException) {
         setErrors(error.validationErrors);
-      } else if (error instanceof HttpException) {
-        if (error.statusCode == HttpStatusCode.UNAUTHORIZED) {
-          alert("Haat göster");
-        }
+      } else if (error instanceof UnauthorizedException) {
+        this.setState({ errorMessage: "Kullanıcı adı veya şifre hatalı" });
+      } else {
+        this.setState({ errorMessage: "Bilinmeyen bir hata oldu. Lütfen tekrar deneyin." });
       }
 
       setSubmitting(false);
@@ -40,9 +50,12 @@ export default class LoginScreen extends Component<Props> {
   };
 
   render() {
+    const { errorMessage } = this.state;
+
     return (
       <div>
         Login Screen<br></br>
+        {errorMessage && <UncontrolledAlert color="danger">{errorMessage}</UncontrolledAlert>}
         <Formik
           initialValues={{ email: "stormwr@gmail.com", password: "Deneme" }}
           validationSchema={loginFormValidationSchema}
@@ -53,7 +66,7 @@ export default class LoginScreen extends Component<Props> {
             <Form>
               <FormikInput label="Email" name="email" formikProps={formikProps} />
               <FormikInput label="Password" name="password" type="password" formikProps={formikProps} />
-              <button type="submit" disabled={formikProps.isSubmitting}>
+              <button type="submit" disabled={formikProps.isSubmitting || !formikProps.isValid}>
                 Submit
               </button>
             </Form>

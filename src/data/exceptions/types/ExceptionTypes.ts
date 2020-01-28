@@ -7,6 +7,7 @@ export interface BaseExceptionProps {
 
 export interface HttpExceptionProps extends BaseExceptionProps {
   statusCode: HttpStatusCode;
+  response: any;
 }
 
 export interface ValidationExceptionProps extends HttpExceptionProps {

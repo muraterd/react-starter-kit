@@ -3,6 +3,7 @@ import { ValidationException } from "data/exceptions/ValidationException";
 import HttpStatusCode from "data/definitions/HttpStatusCode";
 import RouteManager from "infrastructure/Managers/RouteManager";
 import { HttpException } from "data/exceptions/HttpException";
+import { UnauthorizedException } from "data/exceptions/UnauthorizedException";
 
 const HttpClient = axios.create({
   baseURL: "http://192.168.2.23:5000/",
@@ -25,7 +26,7 @@ HttpClient.interceptors.response.use(
         throw ValidationException.fromError(error);
       case HttpStatusCode.UNAUTHORIZED:
         if (!RouteManager.redirectIfNeeded("/login")) {
-          throw HttpException.fromError(error);
+          throw UnauthorizedException.fromError(error);
         }
         break;
       case HttpStatusCode.FORBIDDEN:
